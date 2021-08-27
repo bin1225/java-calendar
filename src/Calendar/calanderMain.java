@@ -10,7 +10,10 @@ public class calanderMain {
         System.out.println("15 16 17 18 19 20 21");
         System.out.println("22 23 24 25 26 27 28");
 
-        System.out.println(Sum.two());
+        int [] maxDays = {31,28,31,30,31,30,31,31,30,31,30,31};
+        int month = Scan.OneNum();
+        System.out.printf("%d월은 %d 일까지 있습니다.",month,maxDays[month -1]);
+
     }
 
 
