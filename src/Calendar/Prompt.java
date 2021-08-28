@@ -14,7 +14,7 @@ public class Prompt {
         System.out.printf(" <<%4d년%3d월>>\n", year,month);
         System.out.println(" SU MO TU WE TH FR SA");
         System.out.println("----------------------");
-        int space = getWeekDayIndex(year,month)-1;
+        int space = getWeekDayIndex(year,month)<=3?3-getWeekDayIndex(year,month):getWeekDayIndex(year, month)-3;
 
         for(int i= 0 ;i< space; i++){
             System.out.print("   ");
@@ -26,29 +26,32 @@ public class Prompt {
         }
         System.out.println();
         space = space==7? 7:getWeekDayIndex(year,month)-1;
-        for(int i = 7-space+1;i<=days;i++){
+        int temp=1;
+        for(int i = 7-space-1;i<=days;i++){
             System.out.printf("%3d",i);
 
-            if(i%7==7-space)
+            if(temp%7==0)
                 System.out.println();
+            temp++;
         }
 
         }
+
     public int getWeekDayIndex(int year,int month){
-        //Jen 1  /week day by year 2000 1 1 =sat
+        //Jen 1  /week day by year 1970 1 1 =THU
         int temp=0;
-        for(int i = 2000;i<year;i++) {
+        for(int i = 1970;i<year;i++) {
             if (i % 4 == 0 && (i % 100 != 0 || i % 400 == 0))
                 temp += 2;
             else
                 temp++;
         }
 
-        int n=0;
         for(int i = 1;i<month;i++)
         {
-            temp += getMaxDaysOfMonth(year,i)%7;
+            temp += getMaxDaysOfMonth(year,i);
         }
+
 
         return temp%7;
     }
