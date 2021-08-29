@@ -1,5 +1,7 @@
 package Calendar;
 
+import java.util.HashMap;
+
 public class Prompt {
     private static final int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -8,8 +10,9 @@ public class Prompt {
             maxDays[1]=29;
         return maxDays[month - 1];
     }
-    public void printSampleCalendar(int year,int month) {
+    public void printSampleCalendar(int year, int month, HashMap<String,String> scheduleList) {
 
+        String YearMonthDate = year+"-"+ month +"-";
         int days = getMaxDaysOfMonth(year,month);
         System.out.printf(" <<%4d년%3d월>>\n", year,month);
         System.out.println(" SU MO TU WE TH FR SA");
@@ -22,7 +25,11 @@ public class Prompt {
         //for(int i = 1;i<7-space;i++)
         for(int i = 1; i <=7-space;i++)
         {
+
             System.out.printf("%3d",i);
+            YearMonthDate+=i;
+            if(scheduleList.containsKey(YearMonthDate))
+                System.out.print(".");
         }
         System.out.println();
         space = space==7? 7:getWeekDayIndex(year,month)-1;
@@ -30,6 +37,8 @@ public class Prompt {
         for(int i = 7-space-1;i<=days;i++){
             System.out.printf("%3d",i);
 
+            if(scheduleList.containsKey(YearMonthDate))
+                System.out.print(".");
             if(temp%7==0)
                 System.out.println();
             temp++;
