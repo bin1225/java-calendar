@@ -27,22 +27,27 @@ public class Prompt {
         {
 
             System.out.printf("%3d",i);
-            YearMonthDate+=i;
-            if(scheduleList.containsKey(YearMonthDate))
+            String YearMonthDate1=YearMonthDate;
+            YearMonthDate1+=i;
+            if(scheduleList.containsKey(YearMonthDate1))
                 System.out.print(".");
         }
         System.out.println();
-        space = space==7? 7:getWeekDayIndex(year,month)-1;
+        space = space==7? 7:space-1;
         int temp=1;
-        for(int i = 7-space-1;i<=days;i++){
+        for(int i = 7-space;i<=days;i++){
             System.out.printf("%3d",i);
+            String YearMonthDate1=YearMonthDate;
+            YearMonthDate1+=i;
+            if(scheduleList.containsKey(YearMonthDate1))
 
-            if(scheduleList.containsKey(YearMonthDate))
                 System.out.print(".");
+
             if(temp%7==0)
                 System.out.println();
             temp++;
         }
+        System.out.println();
 
         }
 

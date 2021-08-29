@@ -53,7 +53,7 @@ public class UI {
         System.out.print("MONTH> ");
         month = Scan.OneNum();
 
-        cal.printSampleCalendar(year, month,scheduleList);
+        cal.printSampleCalendar(year, month, scheduleList);
 
     }
 
